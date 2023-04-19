@@ -22,7 +22,9 @@ alias config='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
 
 6. You can now CHECKOUT the files into your HOME directory `config checkout`
 7. Install NvChad `git clone https://github.com/NvChad/NvChad ~/.config/nvim --depth 1 && nvim`
-8. Symlink your custom config into the NvChad config `ln -s ~/NvimConfig/custom ~/.config/nvim/lua/custom`
+8. Remove custom foler `rm -rf ~/.config/nvim/lua/custom`
+9. Symlink your custom config into the NvChad config `ln -s ~/NvimConfig/custom ~/.config/nvim/lua/custom`
+10. Install deps: `npm(node), cc, gcc, clang, cl, zig`
 
 ## Usage
 
