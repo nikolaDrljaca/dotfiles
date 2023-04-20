@@ -1,5 +1,5 @@
 local M = {}
- M.ui = {theme = 'gruvbox'}
+M.ui = { theme = "gruvbox" }
 M.plugins = "custom.plugins"
-M.mappings = require "custom.mappings"
- return M
+M.mappings = require("custom.mappings")
+return M
