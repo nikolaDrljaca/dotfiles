@@ -55,6 +55,7 @@ local plugins = {
 				"prettierd",
 				"stylua",
 				"autopep8",
+				"svelte-language-server",
 			},
 		},
 	},

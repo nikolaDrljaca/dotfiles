@@ -6,7 +6,9 @@ local lint = null_ls.builtins.diagnostics
 local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
 
 local sources = {
-	formatting.prettierd,
+	formatting.prettierd.with({
+		extra_filetypes = { "svelte" },
+	}),
 	formatting.stylua,
 	null_ls.builtins.formatting.autopep8,
 }
