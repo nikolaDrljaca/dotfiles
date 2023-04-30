@@ -37,6 +37,8 @@ nmap <C-n> :NERDTreeToggle<CR>
 
 nmap <leader>ra <Action>(RenameElement)
 nmap <leader>fm <Action>(ReformatCode)
+nmap <leader>/ <Action>(CommentByLineComment)
+vmap <leader>/ <Action>(CommentByLineComment)
 nmap K <Action>(QuickJavaDoc)
 nmap J <Action>(ShowErrorDescription)
 nmap <leader>ca <Action>(ShowIntentionActions)
