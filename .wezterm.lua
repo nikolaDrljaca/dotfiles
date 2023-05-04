@@ -10,7 +10,7 @@ end
 
 config.color_scheme = "Gruvbox dark, medium (base16)"
 
-config.font = wezterm.font("RecMonoDuotone Nerd Font")
+config.font = wezterm.font("CaskaydiaCove Nerd Font")
 config.font_size = 13.0
 config.initial_cols = 120
 config.initial_rows = 30
