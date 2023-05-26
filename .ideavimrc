@@ -23,6 +23,8 @@ map fm gq
 "" Map \b to toggle the breakpoint on the current line
 "map \b <Action>(ToggleLineBreakpoint)
 
+"" Use system clipboard
+set clipboard+=unnamed
 
 " Find more examples here: https://jb.gg/share-ideavimrc
 " Custom Settings
