@@ -55,9 +55,11 @@ local plugins = {
 	},
 	{
 		"jose-elias-alvarez/null-ls.nvim",
+-- NOTE: `opts = {}` is the same as calling `require('fidget').setup({})`
 		opts = function()
 			return require("custom.configs.null-ls")
 		end,
+		lazy = false,
 	},
 	{
 		"folke/todo-comments.nvim",
