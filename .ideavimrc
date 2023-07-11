@@ -37,10 +37,8 @@ vnoremap <S-e> $
 nnoremap <S-b> _
 vnoremap <S-b> _
 
-set NERDTree
-nmap <leader>e :NERDTreeFocus<CR>
-nmap <C-n> :NERDTreeToggle<CR>
 
+nmap <C-n> <Action>(ActivateProjectToolWindow)
 nmap <leader>ra <Action>(RenameElement)
 nmap <leader>fm <Action>(ReformatCode)
 nmap <leader>/ <Action>(CommentByLineComment)
