@@ -14,7 +14,12 @@ alias config='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
 echo ".cfg" >> .gitignore
 ```
 
-4. `git clone --bare https://github.com/nikolaDrljaca/dotfiles.git $HOME/.cfg`
+4. Clone the repo  
+
+```
+git clone --bare https://github.com/nikolaDrljaca/dotfiles.git $HOME/.cfg`
+```
+
 5. Define the alias for the current shell instance
 
 ```
