@@ -286,6 +286,7 @@ vim.keymap.set('n', '<leader>rn', ":set relativenumber<CR>")
 vim.keymap.set('n', '<leader>fm', ":FormatWrite<CR>")
 vim.keymap.set('n', '<C-n>', ":NvimTreeToggle<CR>")
 vim.keymap.set('n', '<leader>e', ":NvimTreeFocus<CR>")
+vim.keymap.set('n', '<C-l>', "yyp")
 
 -- VISUAL
 vim.keymap.set('v', '<A-j>', ":m '>+1<CR>gv=gv")
