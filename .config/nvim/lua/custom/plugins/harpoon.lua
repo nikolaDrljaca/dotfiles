@@ -1,5 +1,6 @@
 local harpoon = {
   'ThePrimeagen/harpoon',
+  lazy = false,
   -- Config
   config = function()
     local harp = require 'harpoon.ui'

@@ -116,7 +116,7 @@ require('lazy').setup({
   },
 
   -- Useful plugin to show you pending keybinds.
-  { 'folke/which-key.nvim',          opts = {} },
+  { 'folke/which-key.nvim', opts = {} },
   {
     -- Adds git releated signs to the gutter, as well as utilities for managing changes
     'lewis6991/gitsigns.nvim',
@@ -130,8 +130,7 @@ require('lazy').setup({
         changedelete = { text = '~' },
       },
       on_attach = function(bufnr)
-        vim.keymap.set('n', '<leader>gp', require('gitsigns').prev_hunk,
-          { buffer = bufnr, desc = '[G]o to [P]revious Hunk' })
+        vim.keymap.set('n', '<leader>gp', require('gitsigns').prev_hunk, { buffer = bufnr, desc = '[G]o to [P]revious Hunk' })
         vim.keymap.set('n', '<leader>gn', require('gitsigns').next_hunk, { buffer = bufnr, desc = '[G]o to [N]ext Hunk' })
         vim.keymap.set('n', '<leader>ph', require('gitsigns').preview_hunk, { buffer = bufnr, desc = '[P]review [H]unk' })
       end,
@@ -158,6 +157,14 @@ require('lazy').setup({
         component_separators = '|',
         section_separators = '',
       },
+      sections = {
+        lualine_c = {
+          {
+            'filename',
+            path = 1,
+          },
+        },
+      },
     },
   },
 
@@ -177,12 +184,12 @@ require('lazy').setup({
     'numToStr/Comment.nvim',
     opts = {
       toggler = {
-        line = "<leader>/"
+        line = '<leader>/',
       },
       opleader = {
-        line = "<leader>/"
-      }
-    }
+        line = '<leader>/',
+      },
+    },
   },
 
   -- Fuzzy Finder (files, lsp, etc)
@@ -273,28 +280,28 @@ vim.keymap.set('n', 'j', "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = tr
 
 -- CUSTOM REMAPS
 -- INSERT
-vim.keymap.set('i', 'jk', "<ESC>")
+vim.keymap.set('i', 'jk', '<ESC>')
 -- NORMAL
-vim.keymap.set('n', '<A-j>', ":m .+1<CR>==")
-vim.keymap.set('n', '<A-k>', ":m .-2<CR>==")
-vim.keymap.set('n', '<S-b>', "_")
-vim.keymap.set('n', '<S-e>', "$")
-vim.keymap.set('n', '<C-d>', "<C-d>zz")
-vim.keymap.set('n', '<C-u>', "<C-u>zz")
-vim.keymap.set('n', '<leader>n', ":set number<CR>")
-vim.keymap.set('n', '<leader>rn', ":set relativenumber<CR>")
-vim.keymap.set('n', '<leader>fm', ":FormatWrite<CR>")
-vim.keymap.set('n', '<C-n>', ":NvimTreeToggle<CR>")
-vim.keymap.set('n', '<leader>e', ":NvimTreeFocus<CR>")
-vim.keymap.set('n', '<C-l>', "yyp")
+vim.keymap.set('n', '<A-j>', ':m .+1<CR>==')
+vim.keymap.set('n', '<A-k>', ':m .-2<CR>==')
+vim.keymap.set('n', '<S-b>', '_')
+vim.keymap.set('n', '<S-e>', '$')
+vim.keymap.set('n', '<C-d>', '<C-d>zz')
+vim.keymap.set('n', '<C-u>', '<C-u>zz')
+vim.keymap.set('n', '<leader>n', ':set number<CR>')
+vim.keymap.set('n', '<leader>rn', ':set relativenumber<CR>')
+vim.keymap.set('n', '<leader>fm', ':FormatWrite<CR>')
+vim.keymap.set('n', '<C-n>', ':NvimTreeToggle<CR>')
+vim.keymap.set('n', '<leader>e', ':NvimTreeFocus<CR>')
+vim.keymap.set('n', '<C-l>', 'yyp')
 
 -- VISUAL
 vim.keymap.set('v', '<A-j>', ":m '>+1<CR>gv=gv")
 vim.keymap.set('v', '<A-k>', ":m '<-2<CR>gv=gv")
-vim.keymap.set('v', '<S-b>', "_")
-vim.keymap.set('v', '<S-e>', "$")
-vim.keymap.set('v', '<C-d>', "<C-d>zz")
-vim.keymap.set('v', '<C-u>', "<C-u>zz")
+vim.keymap.set('v', '<S-b>', '_')
+vim.keymap.set('v', '<S-e>', '$')
+vim.keymap.set('v', '<C-d>', '<C-d>zz')
+vim.keymap.set('v', '<C-u>', '<C-u>zz')
 
 -- [[ Highlight on yank ]]
 -- See `:help vim.highlight.on_yank()`
@@ -350,7 +357,7 @@ vim.keymap.set('n', ']d', vim.diagnostic.goto_next, { desc = 'Go to next diagnos
 vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagnostics list' })
 -- NOTE: Custom diagnostic keymaps
 vim.keymap.set('n', '<S-j>', function()
-  vim.diagnostic.open_float({ border = "rounded" })
+  vim.diagnostic.open_float { border = 'rounded' }
 end)
 
 -- [[ Configure LSP ]]
@@ -405,21 +412,21 @@ end
 --  the `settings` field of the server config. You must look up that documentation yourself.
 
 -- Custom command to Install binaries from Mason Registry
-vim.api.nvim_create_user_command("MasonInstallAll", function()
+vim.api.nvim_create_user_command('MasonInstallAll', function()
   local mason_ensure_installed = {
-    "tailwindcss-language-server",
-    "pyright",
-    "typescript-language-server",
-    "emmet-ls",
-    "eslint-lsp",
-    "prettierd",
-    "stylua",
-    "black",
-    "svelte-language-server",
-    "rustywind",
+    'tailwindcss-language-server',
+    'pyright',
+    'typescript-language-server',
+    'emmet-ls',
+    'eslint-lsp',
+    'prettierd',
+    'stylua',
+    'black',
+    'svelte-language-server',
+    'rustywind',
   }
   for _, v in pairs(mason_ensure_installed) do
-    vim.cmd("MasonInstall " .. v)
+    vim.cmd('MasonInstall ' .. v)
   end
 end, {})
 
@@ -437,7 +444,6 @@ local servers = {
     },
   },
 }
-
 
 -- Setup neovim lua configuration
 require('neodev').setup()
@@ -462,7 +468,6 @@ mason_lspconfig.setup_handlers {
     }
   end,
 }
-
 
 -- [[ Configure nvim-cmp ]]
 -- See `:help cmp`
@@ -513,11 +518,10 @@ cmp.setup {
 }
 
 -- Configure indentation per filetype
-vim.api.nvim_create_autocmd("FileType", {
-  pattern = "lua",
-  command = "setlocal shiftwidth=4 tabstop=4"
+vim.api.nvim_create_autocmd('FileType', {
+  pattern = 'lua',
+  command = 'setlocal shiftwidth=4 tabstop=4',
 })
-
 
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et
