@@ -12,6 +12,12 @@ local formatter = {
 				typescriptreact = {
 					require("formatter.filetypes.typescriptreact").prettierd
 				},
+				javascript = {
+					require("formatter.filetypes.javascript").prettierd
+				},
+				javascriptreact = {
+					require("formatter.filetypes.javascriptreact").prettierd
+				},
 				["*"] = {
 					-- "formatter.filetypes.any" defines default configurations for any
 					-- filetype
