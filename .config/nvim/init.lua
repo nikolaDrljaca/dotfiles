@@ -420,6 +420,7 @@ vim.api.nvim_create_user_command('MasonInstallAll', function()
     'emmet-ls',
     'eslint-lsp',
     'prettierd',
+    'kotlin-language-server',
     'stylua',
     'black',
     'svelte-language-server',
@@ -437,6 +438,7 @@ local servers = {
   pyright = {},
   emmet_ls = {},
   eslint = {},
+  kotlin_language_server = {},
   lua_ls = {
     Lua = {
       workspace = { checkThirdParty = false },
