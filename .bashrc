@@ -117,10 +117,13 @@ if ! shopt -oq posix; then
 fi
 
 
-eval "$(oh-my-posh init bash --config /home/nikola/.poshthemes/amro.omp.json)"
+# eval "$(oh-my-posh init bash --config /home/nikola/.poshthemes/amro.omp.json)"
+
+eval "$(starship init bash)"
 
 alias config='/usr/bin/git --git-dir=/home/nikola/.cfg/ --work-tree=/home/nikola'
 alias suu="sudo nala update && sudo nala upgrade"
+alias gadd="git add . :^src/**/resources/**.yml :^src/**/resources/**.yaml; git status"
 
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
 export SDKMAN_DIR="$HOME/.sdkman"
