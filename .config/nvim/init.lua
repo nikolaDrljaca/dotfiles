@@ -137,20 +137,12 @@ require('lazy').setup({
     },
   },
 
-  -- {
-  --   'luisiacc/gruvbox-baby',
-  --   priority = 1000,
-  --   config = function()
-  --     vim.cmd.colorscheme 'gruvbox-baby'
-  --   end,
-  -- },
   {
-    'stevedylandev/flexoki-nvim',
-    name = 'flexoki',
+    'luisiacc/gruvbox-baby',
     priority = 1000,
     config = function()
-      vim.cmd.colorscheme 'flexoki'
-    end
+      vim.cmd.colorscheme 'gruvbox-baby'
+    end,
   },
 
   {
