@@ -22,7 +22,7 @@ map fm gq
 
 "" Map \b to toggle the breakpoint on the current line
 "map \b <Action>(ToggleLineBreakpoint)
-
+"
 "" Use system clipboard
 set clipboard+=unnamed
 
@@ -45,16 +45,17 @@ nmap <leader>/ <Action>(CommentByLineComment)
 vmap <leader>/ <Action>(CommentByLineComment)
 nmap K <Action>(QuickJavaDoc)
 nmap J <Action>(ShowErrorDescription)
-nmap <leader>ca <Action>(ShowIntentionActions)
 nmap gd <Action>(GotoDeclaration)
 nmap gi <Action>(GotoImplementation)
+nmap gs <Action>(FileStructurePopup)
 nmap <TAB> <Action>(NextTab)
 nmap <S-TAB> <Action>(PreviousTab)
 nmap <leader>ff <Action>(SearchEverywhere)
+nmap <leader>fa <Action>(FindUsages)
 nmap <A-j> <Action>(MoveLineDown)
 nmap <A-k> <Action>(MoveLineUp)
 vmap <A-j> <Action>(MoveStatementDown)
 vmap <A-k> <Action>(MoveStatementUp)
 nmap <leader>x <Action>(CloseContent)
 nmap <C-l> <Action>(EditorDuplicate)
-
+nmap <C-x> <Action>(Back)

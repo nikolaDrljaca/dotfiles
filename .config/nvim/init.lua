@@ -414,6 +414,7 @@ end
 -- Custom command to Install binaries from Mason Registry
 vim.api.nvim_create_user_command('MasonInstallAll', function()
   local mason_ensure_installed = {
+    'angular-language-server',
     'tailwindcss-language-server',
     'pyright',
     'typescript-language-server',
@@ -525,5 +526,14 @@ vim.api.nvim_create_autocmd('FileType', {
   command = 'setlocal shiftwidth=4 tabstop=4',
 })
 
+vim.api.nvim_create_autocmd('FileType', {
+  pattern = 'ts',
+  command = 'setlocal shiftwidth=4 tabstop=4',
+})
+
+vim.api.nvim_create_autocmd('FileType', {
+  pattern = 'js',
+  command = 'setlocal shiftwidth=4 tabstop=4',
+})
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et
