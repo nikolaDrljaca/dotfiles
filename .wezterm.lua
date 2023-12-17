@@ -11,7 +11,7 @@ end
 config.color_scheme = "Gruvbox dark, medium (base16)"
 
 config.font = wezterm.font("CommitMono")
-config.font_size = 13.0
+config.font_size = 14.0
 config.initial_cols = 120
 config.initial_rows = 30
 
