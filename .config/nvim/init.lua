@@ -370,6 +370,7 @@ vim.api.nvim_create_user_command('MasonInstallAll', function()
     'black',
     'svelte-language-server',
     'rustywind',
+    'astro-language-server'
   }
   for _, v in pairs(mason_ensure_installed) do
     vim.cmd('MasonInstall ' .. v)
