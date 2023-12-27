@@ -23,7 +23,6 @@ local treesitter = {
         'javascript',
         'tsx',
         'json',
-        'astro',
 
         -- JVM
         'java',

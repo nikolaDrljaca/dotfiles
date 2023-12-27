@@ -80,25 +80,6 @@ require('lazy').setup({
 
   -- Useful plugin to show you pending keybinds.
   { 'folke/which-key.nvim', opts = {} },
-  {
-    -- Adds git releated signs to the gutter, as well as utilities for managing changes
-    'lewis6991/gitsigns.nvim',
-    opts = {
-      -- See `:help gitsigns.txt`
-      signs = {
-        add = { text = '+' },
-        change = { text = '~' },
-        delete = { text = '_' },
-        topdelete = { text = '‾' },
-        changedelete = { text = '~' },
-      },
-      on_attach = function(bufnr)
-        vim.keymap.set('n', '<leader>gp', require('gitsigns').prev_hunk, { buffer = bufnr, desc = '[G]o to [P]revious Hunk' })
-        vim.keymap.set('n', '<leader>gn', require('gitsigns').next_hunk, { buffer = bufnr, desc = '[G]o to [N]ext Hunk' })
-        vim.keymap.set('n', '<leader>ph', require('gitsigns').preview_hunk, { buffer = bufnr, desc = '[P]review [H]unk' })
-      end,
-    },
-  },
 
   {
     -- Set lualine as statusline
@@ -107,7 +88,7 @@ require('lazy').setup({
     opts = {
       options = {
         icons_enabled = false,
-        theme = 'onedark',
+        theme = 'gruvbox_dark',
         component_separators = '|',
         section_separators = '',
       },
@@ -166,7 +147,7 @@ require('lazy').setup({
   --    Uncomment the following line and add your plugins to `lua/custom/plugins/*.lua` to get going.
   --
   --    For additional information see: https://github.com/folke/lazy.nvim#-structuring-your-plugins
-  { import = 'custom.plugins' },
+  { import = 'plugins' },
 }, {})
 
 -- [[ Setting options ]]
@@ -237,6 +218,8 @@ vim.keymap.set('n', '<leader>fm', ':FormatWrite<CR>')
 vim.keymap.set('n', '<C-n>', ':NvimTreeToggle<CR>')
 vim.keymap.set('n', '<leader>e', ':NvimTreeFocus<CR>')
 vim.keymap.set('n', '<C-l>', 'yyp')
+
+vim.keymap.set('n', '<leader>to', ':TodoTelescope<CR>')
 
 -- VISUAL
 vim.keymap.set('v', '<A-j>', ":m '>+1<CR>gv=gv")
@@ -357,10 +340,10 @@ end
 
 -- Custom command to Install binaries from Mason Registry
 vim.api.nvim_create_user_command('MasonInstallAll', function()
+  local registry = require 'mason-registry'
   local mason_ensure_installed = {
     'angular-language-server',
     'tailwindcss-language-server',
-    'pyright',
     'typescript-language-server',
     'emmet-ls',
     'eslint-lsp',
@@ -369,26 +352,41 @@ vim.api.nvim_create_user_command('MasonInstallAll', function()
     'stylua',
     'black',
     'svelte-language-server',
+    'lua-language-server',
     'rustywind',
-    'astro-language-server'
+    'jedi-language-server',
   }
+  -- bring up the Mason UI
+  vim.cmd 'Mason'
+  -- update the registry
+  registry.refresh()
+  -- loop over specified packages and install the ones not installed
   for _, v in pairs(mason_ensure_installed) do
-    vim.cmd('MasonInstall ' .. v)
+    local package = registry.get_package(v)
+    if not package:is_installed() then
+      package:install()
+      -- vim.cmd('MasonInstall ' .. v)
+    end
   end
 end, {})
 
 --  THIS IS ONLY FOR LSPs
+--  if you want to configure an LSP add it here and configure
+--  the list from :MasonInstallAll will install and add the LSP even if not listed here.
 local servers = {
+  angularls = {},
   tsserver = {},
   tailwindcss = {},
-  pyright = {},
   emmet_ls = {},
   eslint = {},
+  svelte = {},
+  jedi_language_server = {},
   kotlin_language_server = {},
   lua_ls = {
     Lua = {
       workspace = { checkThirdParty = false },
       telemetry = { enable = false },
+      diagnostics = { disable = { 'missing-fields' } },
     },
   },
 }
@@ -403,9 +401,9 @@ capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
 -- Ensure the servers above are installed
 local mason_lspconfig = require 'mason-lspconfig'
 
-mason_lspconfig.setup {
-  ensure_installed = vim.tbl_keys(servers),
-}
+-- mason_lspconfig.setup {
+--   ensure_installed = vim.tbl_keys(servers),
+-- }
 
 mason_lspconfig.setup_handlers {
   function(server_name)
@@ -413,6 +411,7 @@ mason_lspconfig.setup_handlers {
       capabilities = capabilities,
       on_attach = on_attach,
       settings = servers[server_name],
+      filetypes = (servers[server_name] or {}).filetypes,
     }
   end,
 }
