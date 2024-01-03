@@ -117,9 +117,7 @@ if ! shopt -oq posix; then
 fi
 
 
-# eval "$(oh-my-posh init bash --config /home/nikola/.poshthemes/amro.omp.json)"
-
-eval "$(starship init bash)"
+eval "$(oh-my-posh init bash --config /home/nikola/.poshthemes/amro.omp.json)"
 
 alias config='/usr/bin/git --git-dir=/home/nikola/.cfg/ --work-tree=/home/nikola'
 alias suu="sudo nala update && sudo nala upgrade"
