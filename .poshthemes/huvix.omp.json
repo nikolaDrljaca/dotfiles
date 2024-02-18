@@ -44,6 +44,6 @@
       "type": "prompt"
     }
   ],
-  "final_space": true,
+  "final_space": false,
   "version": 2
 }
