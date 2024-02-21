@@ -8,10 +8,10 @@ end
 
 -- This is where we can actually apply our configs
 
-config.color_scheme = "Gruvbox dark, medium (base16)"
+config.color_scheme = "Catppuccin Macchiato"
 
-config.font = wezterm.font("CommitMono")
-config.font_size = 14.0
+config.font = wezterm.font("CommitMono Nerd Font Mono")
+config.font_size = 13.0
 config.initial_cols = 120
 config.initial_rows = 30
 
@@ -22,5 +22,10 @@ config.keys = {
 		action = wezterm.action.DisableDefaultAssignment,
 	},
 }
+
+-- Configure to use Intel gpu
+local gpus = wezterm.gui.enumerate_gpus()
+config.webgpu_preferred_adapter = gpus[1]
+config.front_end = 'WebGpu'
 
 return config

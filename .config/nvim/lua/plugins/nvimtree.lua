@@ -1,4 +1,4 @@
-local nvimtree = {
+return {
   "nvim-tree/nvim-tree.lua",
   version = "*",
   lazy = false,
@@ -6,8 +6,10 @@ local nvimtree = {
     "nvim-tree/nvim-web-devicons",
   },
   config = function()
-    require("nvim-tree").setup {}
+    require("nvim-tree").setup({
+      view = {
+        width = 45
+      }
+    })
   end,
 }
-
-return nvimtree

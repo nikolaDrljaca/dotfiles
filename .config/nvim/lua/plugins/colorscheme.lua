@@ -1,11 +1,9 @@
-local colorscheme = {
-  {
-    'luisiacc/gruvbox-baby',
-    priority = 1000,
-    config = function()
-      vim.cmd.colorscheme 'gruvbox-baby'
-    end,
-  },
+return {
+	{
+		"catppuccin/nvim",
+		priority = 1000,
+		config = function()
+			vim.cmd.colorscheme("catppuccin-macchiato")
+		end,
+	},
 }
-
-return colorscheme
