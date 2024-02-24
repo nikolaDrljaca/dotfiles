@@ -122,6 +122,13 @@ eval "$(oh-my-posh init bash --config /home/nikola/.poshthemes/huvix.omp.json)"
 alias config='/usr/bin/git --git-dir=/home/nikola/.cfg/ --work-tree=/home/nikola'
 alias gadd="git add . :^src/**/resources/**.yml :^src/**/resources/**.yaml; git status"
 
+# go 
+export PATH=$PATH:/usr/local/go/bin
+
+# bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH=$BUN_INSTALL/bin:$PATH
+
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
 export SDKMAN_DIR="$HOME/.sdkman"
 [[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
@@ -130,6 +137,3 @@ export SDKMAN_DIR="$HOME/.sdkman"
 
 
 
-# bun
-export BUN_INSTALL="$HOME/.bun"
-export PATH=$BUN_INSTALL/bin:$PATH

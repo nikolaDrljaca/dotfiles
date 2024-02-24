@@ -8,6 +8,7 @@ return {
 				-- formatters
 				null_ls.builtins.formatting.stylua,
 				null_ls.builtins.formatting.prettierd,
+				null_ls.builtins.formatting.autopep8,
 
 				-- linters
 				null_ls.builtins.diagnostics.eslint_d,
