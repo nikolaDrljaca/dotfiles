@@ -13,6 +13,10 @@ Make sure to have `git` and `stow` installed.
 
 - You can make changes to the linked files as if they were "the real" ones. This goes both ways. Editing the link and the source effectively creates the same changes.
 
+## Adding a new config
+
+Just create the config structure as it would need to be in the `$HOME/dotfiles` folder and run the `stow .` command INSIDE that directory.
+
 ## Installation
 
 First, check out the dotfiles repo in your $HOME directory using git
