@@ -117,11 +117,12 @@ if ! shopt -oq posix; then
 fi
 
 
+# custom
 eval "$(oh-my-posh init bash --config /home/nikola/.poshthemes/huvix.omp.json)"
 eval "$(thefuck --alias)"
 
-alias config='/usr/bin/git --git-dir=/home/nikola/.cfg/ --work-tree=/home/nikola'
 alias gadd="git add . :^src/**/resources/**.yml :^src/**/resources/**.yaml; git status"
+alias nvim="nvim.appimage"
 
 # go 
 export PATH=$PATH:/usr/local/go/bin
@@ -133,16 +134,6 @@ export PATH=$BUN_INSTALL/bin:$PATH
 # homebrew
 eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 
-#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
-export SDKMAN_DIR="$HOME/.sdkman"
-[[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
-
-
-
-
-
-
-
 # pnpm
 export PNPM_HOME="/home/nikola/.local/share/pnpm"
 case ":$PATH:" in
@@ -150,3 +141,9 @@ case ":$PATH:" in
   *) export PATH="$PNPM_HOME:$PATH" ;;
 esac
 # pnpm end
+
+
+#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
+export SDKMAN_DIR="$HOME/.sdkman"
+[[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
+

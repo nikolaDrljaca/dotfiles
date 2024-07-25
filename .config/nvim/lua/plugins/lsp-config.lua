@@ -19,7 +19,10 @@ return {
 	},
 
 	config = function()
-		local on_attach = function(_, bufnr)
+		-- define function to run on LspAttach event
+		local on_attach = function(args)
+			-- extract buffer number
+			local bufnr = args.buf
 			-- In this case, we create a function that lets us more easily define mappings specific
 			-- for LSP related items. It sets the mode, buffer and description for us each time.
 			local nmap = function(keys, func, desc)
@@ -54,6 +57,18 @@ return {
 			end, "[W]orkspace [L]ist Folders")
 		end
 
+		-- configure LspAttach event
+		vim.api.nvim_create_autocmd("LspAttach", {
+			callback = on_attach,
+		})
+
+		-- Setup neovim lua configuration
+		require("neodev").setup()
+
+		-- nvim-cmp supports additional completion capabilities, so broadcast that to servers
+		local capabilities = vim.lsp.protocol.make_client_capabilities()
+		capabilities = require("cmp_nvim_lsp").default_capabilities(capabilities)
+
 		--  THIS IS ONLY FOR LSPs
 		--  if you wish to supply additional configuration options to the LSP
 		--  regardless if it is here or not, it will be attached to the buffer.
@@ -77,26 +92,29 @@ return {
 			lexical = {
 				cmd = { "/home/nikola/.local/share/nvim/mason/bin/lexical", "server" },
 				root_dir = require("lspconfig.util").root_pattern({ "mix.exs" }),
+				filetypes = { "elixir", "eelixir", "heex" },
+				settings = {},
 			},
 		}
 
-		-- Setup neovim lua configuration
-		require("neodev").setup()
+		-- invoke setup on all servers in [servers] table
+		require("mason-lspconfig").setup({
+			handlers = {
+				function(server_name)
+					local server = servers[server_name] or {}
+					server.capabilities = vim.tbl_deep_extend("force", {}, capabilities, server.capabilities or {})
+					require("lspconfig")[server_name].setup(server)
+				end,
+			},
+		})
 
-		-- nvim-cmp supports additional completion capabilities, so broadcast that to servers
-		local capabilities = vim.lsp.protocol.make_client_capabilities()
-		capabilities = require("cmp_nvim_lsp").default_capabilities(capabilities)
-
-		-- Ensure the servers above are installed
-		local mason_lspconfig = require("mason-lspconfig")
-
-		mason_lspconfig.setup_handlers({
-			function(server_name)
-				require("lspconfig")[server_name].setup({
-					capabilities = capabilities,
-					on_attach = on_attach,
-					settings = servers[server_name],
-					filetypes = (servers[server_name] or {}).filetypes,
+		-- autoformatting -> conform is setup in plugins
+		vim.api.nvim_create_autocmd("BufWritePre", {
+			callback = function(args)
+				require("conform").format({
+					bufnr = args.buf,
+					lsp_fallback = true,
+					quite = true,
 				})
 			end,
 		})

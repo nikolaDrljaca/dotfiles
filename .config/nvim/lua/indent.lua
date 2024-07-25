@@ -1,23 +1,23 @@
-local two_space = { "html", "json", "tsx", "jsx", "astro" }
+local file_extensions = {
+	html = 2,
+	json = 2,
+	typescriptreact = 2,
+	astro = 2,
+	lua = 2,
+	kt = 4,
+	java = 4,
+	python = 4,
+	typescript = 4,
+	javascript = 4,
+}
 
-for _, filetype in ipairs(two_space) do
+for ext, width in pairs(file_extensions) do
 	vim.api.nvim_create_autocmd("FileType", {
-		pattern = filetype,
+		pattern = ext,
 		callback = function()
-			vim.opt_local.shiftwidth = 2
-			vim.opt_local.tabstop = 2
-		end,
-	})
-end
-
-local four_space = { "kt", "java", "py", "ts", "js" }
-
-for _, filetype in ipairs(four_space) do
-	vim.api.nvim_create_autocmd("FileType", {
-		pattern = filetype,
-		callback = function()
-			vim.opt_local.shiftwidth = 4
-			vim.opt_local.tabstop = 4
+			vim.opt_local.shiftwidth = width
+			vim.opt_local.tabstop = width
+			vim.opt_local.expandtab = true
 		end,
 	})
 end
