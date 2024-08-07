@@ -18,11 +18,16 @@ return {
 							["<C-d>"] = false,
 						},
 					},
+					file_ignore_patterns = {
+						"node_modules",
+					},
 				},
 			})
 
 			-- Enable telescope fzf native, if installed
 			pcall(require("telescope").load_extension, "fzf")
+			-- load ui-select
+			require("telescope").load_extension("ui-select")
 
 			-- See `:help telescope.builtin`
 			-- vim.keymap.set('n', '<leader>?', require('telescope.builtin').oldfiles, { desc = '[?] Find recently opened files' })
@@ -35,9 +40,20 @@ return {
 				}))
 			end, { desc = "[fb] Fuzzily search in current buffer" })
 
-			vim.keymap.set("n", "<leader>gf", require("telescope.builtin").git_files, { desc = "Search [G]it [F]iles" })
-			vim.keymap.set("n", "<leader>ff", require("telescope.builtin").find_files, { desc = "[S]earch [F]iles" })
+			-- custom find files function that tries to search git files first
+			-- if project is not a git repo switches to regular find files
+			local function find_files()
+				local find_git_files = require("telescope.builtin").git_files
+				if not pcall(find_git_files) then
+					require("telescope.builtin").find_files()
+				end
+			end
+			vim.keymap.set("n", "<leader>ff", find_files, { desc = "[F]ind [F]iles, git files if repo" })
+
+			-- vim.keymap.set("n", "<leader>gf", require("telescope.builtin").git_files, { desc = "Search [G]it [F]iles" })
+			-- vim.keymap.set("n", "<leader>ff", require("telescope.builtin").find_files, { desc = "[S]earch [F]iles" })
 			-- vim.keymap.set('n', '<leader>sh', require('telescope.builtin').help_tags, { desc = '[S]earch [H]elp' })
+
 			vim.keymap.set(
 				"n",
 				"<leader>fw",
