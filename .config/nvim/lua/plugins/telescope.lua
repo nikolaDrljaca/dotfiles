@@ -50,10 +50,6 @@ return {
 			end
 			vim.keymap.set("n", "<leader>ff", find_files, { desc = "[F]ind [F]iles, git files if repo" })
 
-			-- vim.keymap.set("n", "<leader>gf", require("telescope.builtin").git_files, { desc = "Search [G]it [F]iles" })
-			-- vim.keymap.set("n", "<leader>ff", require("telescope.builtin").find_files, { desc = "[S]earch [F]iles" })
-			-- vim.keymap.set('n', '<leader>sh', require('telescope.builtin').help_tags, { desc = '[S]earch [H]elp' })
-
 			vim.keymap.set(
 				"n",
 				"<leader>fw",

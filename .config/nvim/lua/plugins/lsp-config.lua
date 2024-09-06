@@ -95,6 +95,8 @@ return {
 				filetypes = { "elixir", "eelixir", "heex" },
 				settings = {},
 			},
+			prettierd = {},
+			eslint_d = {},
 		}
 
 		-- invoke setup on all servers in [servers] table
