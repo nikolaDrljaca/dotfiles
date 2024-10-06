@@ -8,7 +8,7 @@ end
 
 config.color_scheme = "Catppuccin Macchiato"
 
-config.font = wezterm.font("RecMonoLinear Nerd Font Mono")
+-- config.font = wezterm.font("RecMonoLinear Nerd Font Mono")
 config.font_size = 13.0
 
 -- size
@@ -17,7 +17,7 @@ config.initial_rows = 30
 
 config.window_decorations = "RESIZE"
 config.window_frame = {
-	font = wezterm.font({ family = "RecMonoLinear Nerd Font Mono", weight = "Bold" }),
+	-- font = wezterm.font({ family = "RecMonoLinear Nerd Font Mono", weight = "Bold" }),
 	font_size = 11,
 }
 
