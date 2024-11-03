@@ -14,13 +14,11 @@ vim.api.nvim_create_user_command("MasonInstallAll", function()
 		"svelte-language-server",
 
 		-- formatters
-		"prettierd",
 		"stylua",
 		"rustywind", -- tailwind formatter
 		"autopep8",
 
 		-- linters
-		"eslint_d",
 	}
 	-- bring up the Mason UI
 	vim.cmd("Mason")

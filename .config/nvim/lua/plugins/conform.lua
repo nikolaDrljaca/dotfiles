@@ -28,7 +28,15 @@ return {
 		formatters_by_ft = {
 			lua = { "stylua" },
 			python = { "autopep8" },
-			javascript = { "prettierd" },
+			css = { "deno_fmt" },
+			html = { "deno_fmt" },
+			javascript = { "deno_fmt" },
+			typescript = { "deno_fmt" },
+			json = { "deno_fmt" },
+			jsonc = { "deno_fmt" },
+			javascriptreact = { "deno_fmt" },
+			typescriptreact = { "deno_fmt" },
+			markdown = { "deno_fmt" },
 		},
 	},
 }

@@ -73,7 +73,9 @@ return {
 		--  if you wish to supply additional configuration options to the LSP
 		--  regardless if it is here or not, it will be attached to the buffer.
 		local servers = {
-			tsserver = {},
+			tsserver = {
+				root_dir = require("lspconfig.util").root_pattern("package.json"),
+			},
 			tailwindcss = {},
 			emmet_ls = {},
 			lua_ls = {
@@ -95,8 +97,9 @@ return {
 				filetypes = { "elixir", "eelixir", "heex" },
 				settings = {},
 			},
-			prettierd = {},
-			eslint_d = {},
+			denols = {
+				root_dir = require("lspconfig.util").root_pattern("deno.json", "deno.jsonc"),
+			},
 		}
 
 		-- invoke setup on all servers in [servers] table
