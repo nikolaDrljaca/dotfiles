@@ -73,7 +73,7 @@ return {
 		--  if you wish to supply additional configuration options to the LSP
 		--  regardless if it is here or not, it will be attached to the buffer.
 		local servers = {
-			tsserver = {
+			ts_ls = {
 				root_dir = require("lspconfig.util").root_pattern("package.json"),
 			},
 			tailwindcss = {},

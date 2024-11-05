@@ -14,5 +14,6 @@ config.font_size = 13.0
 -- size
 config.initial_cols = 120
 config.initial_rows = 30
+config.enable_wayland = true
 
 return config

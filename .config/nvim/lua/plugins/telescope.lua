@@ -38,7 +38,7 @@ return {
 					winblend = 10,
 					previewer = false,
 				}))
-			end, { desc = "[fb] Fuzzily search in current buffer" })
+			end, { desc = "[F]uzzily search in current [b]uffer" })
 
 			-- custom find files function that tries to search git files first
 			-- if project is not a git repo switches to regular find files
@@ -54,7 +54,7 @@ return {
 				"n",
 				"<leader>fw",
 				require("telescope.builtin").grep_string,
-				{ desc = "[S]earch current [W]ord" }
+				{ desc = "[F]ind current [W]ord" }
 			)
 			vim.keymap.set("n", "<leader>sg", require("telescope.builtin").live_grep, { desc = "[S]earch by [G]rep" })
 			vim.keymap.set(
@@ -63,6 +63,9 @@ return {
 				require("telescope.builtin").diagnostics,
 				{ desc = "[S]earch [D]iagnostics" }
 			)
+			vim.keymap.set("n", "<leader>sn", function()
+				require("telescope.builtin").find_files({ cwd = vim.fn.stdpath("config") })
+			end, { desc = "[S]earch [N]eovim files" })
 		end,
 	},
 
