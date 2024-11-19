@@ -23,7 +23,6 @@ vim.keymap.set("n", "<leader>rn", ":set relativenumber<CR>")
 vim.keymap.set("n", "<C-n>", ":NvimTreeToggle<CR>")
 vim.keymap.set("n", "<leader>e", ":NvimTreeFocus<CR>")
 vim.keymap.set("n", "<C-l>", "yyp")
--- vim.keymap.set("n", "<C-x>", "<C-o>")
 vim.keymap.set("n", "<leader>to", ":TodoTelescope<CR>")
 
 -- VISUAL
