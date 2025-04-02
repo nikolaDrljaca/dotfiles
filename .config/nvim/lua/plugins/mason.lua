@@ -7,11 +7,6 @@ vim.api.nvim_create_user_command("MasonInstallAll", function()
 		"typescript-language-server",
 		"emmet-ls",
 		"lua-language-server",
-		"pyright",
-		"gopls",
-		"astro-language-server",
-		"lexical",
-		"svelte-language-server",
 
 		-- formatters
 		"stylua",

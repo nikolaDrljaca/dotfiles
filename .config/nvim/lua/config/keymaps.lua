@@ -44,12 +44,22 @@ vim.api.nvim_create_autocmd("TextYankPost", {
 	pattern = "*",
 })
 
--- Diagnostic keymaps
-vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, { desc = "Go to previous diagnostic message" })
-vim.keymap.set("n", "]d", vim.diagnostic.goto_next, { desc = "Go to next diagnostic message" })
-vim.keymap.set("n", "<leader>q", vim.diagnostic.setloclist, { desc = "Open diagnostics list" })
-
 -- NOTE: Custom diagnostic keymaps
 vim.keymap.set("n", "<S-j>", function()
 	vim.diagnostic.open_float({ border = "rounded" })
 end)
+
+---[[ Setup keymaps so we can accept completion using Enter and choose items using arrow keys or Tab.
+local pumMaps = {
+	["<Tab>"] = "<C-n>",
+	["<S-Tab>"] = "<C-p>",
+	["<Down>"] = "<C-n>",
+	["<Up>"] = "<C-p>",
+	["<CR>"] = "<C-y>",
+}
+for insertKmap, pumKmap in pairs(pumMaps) do
+	vim.keymap.set("i", insertKmap, function()
+		return vim.fn.pumvisible() == 1 and pumKmap or insertKmap
+	end, { expr = true })
+end
+---]]

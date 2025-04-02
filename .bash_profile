@@ -17,3 +17,4 @@ export PATH="$PATH:/home/nikola/.local/share/JetBrains/Toolbox/apps"
 export PATH="$PATH:/home/nikola/graalvm-ce-java17-22.3.1/bin"
 export GRAALVM_HOME="/home/nikola/graalvm-ce-java17-22.3.1"
 
+. "/home/nikola/.deno/env"
