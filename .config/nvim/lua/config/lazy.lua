@@ -1,12 +1,3 @@
--- Set <space> as the leader key
--- NOTE: Must happen before plugins are required (otherwise wrong leader will be used)
-vim.g.mapleader = " "
-vim.g.maplocalleader = " "
-
--- NOTE: Disable netrw to make nvimtree work
-vim.g.loaded_netrw = 1
-vim.g.loaded_netrwPlugin = 1
-
 -- Bootstrap lazy.nvim
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not (vim.uv or vim.loop).fs_stat(lazypath) then

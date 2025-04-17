@@ -55,6 +55,3 @@ vim.opt.fillchars = { eob = " " }
 
 -- highlight current line
 vim.opt.cursorline = true
-
--- set default rounded border for floating windows
-vim.o.winborder = "rounded"

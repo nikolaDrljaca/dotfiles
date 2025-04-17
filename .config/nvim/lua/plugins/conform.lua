@@ -11,7 +11,7 @@ return {
 		{
 			"<leader>fm",
 			function()
-				require("conform").format({ async = true })
+				require("conform").format({ async = true, lsp_fallback = "fallback" })
 			end,
 		},
 		mode = "",

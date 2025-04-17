@@ -8,21 +8,18 @@ local on_attach = function(args)
 		if desc then
 			desc = "LSP: " .. desc
 		end
-
 		vim.keymap.set("n", keys, func, { buffer = bufnr, desc = desc })
 	end
 
-	nmap("<leader>ra", vim.lsp.buf.rename, "[R]en[a]me")
+	nmap("<leader>D", require("telescope.builtin").lsp_type_definitions, "Type [D]efinition")
 
-	nmap("ga", vim.lsp.buf.code_action, "[C]ode [A]ction")
+	nmap("<leader>ra", vim.lsp.buf.rename, "[R]en[a]me")
+	nmap("ga", vim.lsp.buf.code_action, "[G]oto code [A]ction")
 	nmap("gD", vim.lsp.buf.declaration, "[G]oto [D]eclaration")
 	nmap("gd", require("telescope.builtin").lsp_definitions, "[G]oto [D]efinition")
 	nmap("gr", require("telescope.builtin").lsp_references, "[G]oto [R]eferences")
 	nmap("gi", require("telescope.builtin").lsp_implementations, "[G]oto [I]mplementation")
-
-	nmap("<leader>D", vim.lsp.buf.type_definition, "Type [D]efinition")
-	nmap("<leader>ds", require("telescope.builtin").lsp_document_symbols, "[D]ocument [S]ymbols")
-	nmap("<leader>ws", require("telescope.builtin").lsp_dynamic_workspace_symbols, "[W]orkspace [S]ymbols")
+	nmap("gO", require("telescope.builtin").lsp_document_symbols, "[D]ocument [S]ymbols")
 
 	-- See `:help K` for why this keymap
 	nmap("<S-k>", vim.lsp.buf.hover, "Hover Documentation")
@@ -43,9 +40,19 @@ local on_attach = function(args)
 	-- enable autocompletions
 	local client_id = args.data.client_id
 	local client = vim.lsp.get_client_by_id(client_id)
-	if client:supports_method("textDocument/completion") then
-		vim.lsp.completion.enable(true, client.id, bufnr, { autotrigger = true })
+	if client == nil then
+		return
 	end
+
+	-- NOTE: Completion handled by blink.cmp -> check plugin config
+
+	--[[
+  -- check for completion support
+	if client:supports_method("textDocument/completion") then
+	-- enable completions
+	  vim.lsp.completion.enable(true, client.id, bufnr, { autotrigger = true })
+	end
+  --]]
 end
 
 -- configure LspAttach event
