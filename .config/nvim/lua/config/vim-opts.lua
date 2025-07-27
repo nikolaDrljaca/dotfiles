@@ -28,6 +28,11 @@ end)
 
 -- Enable break indent
 vim.o.breakindent = true
+vim.o.autoindent = true
+vim.o.breakindent = true
+
+-- limit inline popup size to 5 elems
+vim.o.pumheight = 5
 
 -- Save undo history
 vim.o.undofile = true

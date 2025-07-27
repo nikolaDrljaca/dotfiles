@@ -7,6 +7,6 @@ return {
 		"nvim-telescope/telescope.nvim", -- optional
 	},
 	opts = {
-		kind = "floating",
+		kind = "tab",
 	},
 }
