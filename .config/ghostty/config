@@ -11,3 +11,10 @@ font-feature = -calt
 font-feature = -dlig
 theme = catppuccin-macchiato
 gtk-wide-tabs = false
+
+keybind = alt+t=new_tab
+keybind = alt+w=close_tab
+keybind = alt+l=next_tab
+keybind = alt+l=previous_tab
+
+confirm-close-surface = false
