@@ -37,19 +37,22 @@ vnoremap <S-e> $
 nnoremap <S-b> _
 vnoremap <S-b> _
 
+" LSP related bindings
+nmap K <Action>(QuickJavaDoc)
+nmap J <Action>(ShowErrorDescription)
+nmap ga <Action>(ShowIntentionActions)
+nmap gd <Action>(GotoDeclaration)
+nmap gi <Action>(GotoImplementation)
+nmap gD <Action>(GotoSuperMethod)
+nmap gr <Action>(FindUsages)
+nmap gO <Action>(FileStructurePopup)
 
 nmap <C-n> <Action>(ActivateProjectToolWindow)
 nmap <leader>ra <Action>(RenameElement)
 nmap <leader>fm <Action>(ReformatCode)
 nmap <leader>/ <Action>(CommentByLineComment)
 vmap <leader>/ <Action>(CommentByLineComment)
-nmap K <Action>(QuickJavaDoc)
-nmap J <Action>(ShowErrorDescription)
-nmap gd <Action>(GotoDeclaration)
-nmap gi <Action>(GotoImplementation)
-nmap gD <Action>(GotoSuperMethod)
-nmap gr <Action>(FindUsages)
-nmap <leader>ds <Action>(FileStructurePopup)
+
 nmap <TAB> <Action>(NextTab)
 nmap <S-TAB> <Action>(PreviousTab)
 nmap <leader>ff <Action>(GotoFile)
@@ -58,7 +61,6 @@ nmap <A-j> <Action>(MoveLineDown)
 nmap <A-k> <Action>(MoveLineUp)
 vmap <A-j> <Action>(MoveStatementDown)
 vmap <A-k> <Action>(MoveStatementUp)
-nmap <leader>x <Action>(CloseContent)
 nmap <C-l> <Action>(EditorDuplicate)
 nmap <C-o> <Action>(Back)
 nmap [d <Action>(GotoNextError)
