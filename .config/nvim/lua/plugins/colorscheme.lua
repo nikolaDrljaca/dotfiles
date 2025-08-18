@@ -1,9 +1,12 @@
 return {
 	{
-		"catppuccin/nvim",
+		"neanias/everforest-nvim",
 		priority = 1000,
 		config = function()
-			vim.cmd.colorscheme("catppuccin-macchiato")
+			require("everforest").setup({
+				background = "hard",
+			})
+			vim.cmd.colorscheme("everforest")
 		end,
 	},
 }
