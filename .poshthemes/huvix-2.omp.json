@@ -10,7 +10,7 @@
             "cache_duration": "none"
           },
           "template": "{{ .UserName }} ➜",
-          "foreground": "#D3C6AA",
+          "foreground": "#7FBBB3",
           "type": "session",
           "style": "plain"
         },
