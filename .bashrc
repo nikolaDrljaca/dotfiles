@@ -118,7 +118,7 @@ fi
 
 
 # custom
-eval "$(oh-my-posh init bash --config /home/nikola/.poshthemes/huvix.omp.json)"
+eval "$(oh-my-posh init bash --config /home/nikola/.poshthemes/huvix-2.omp.json)"
 eval "$(thefuck --alias)"
 
 alias gadd="git add . :^src/**/resources/**.yml :^src/**/resources/**.yaml; git status"
