@@ -65,7 +65,8 @@
     "format-ethernet": "",
     "tooltip": "false",
     "format-linked": "{ifname} ",
-    "format-disconnected": "Disconnected"
+    "format-disconnected": "Disconnected",
+    "on-click": "env XDG_CURRENT_DESKTOP=GNOME gnome-control-center wifi"
   },
 
   "battery": {
@@ -77,7 +78,8 @@
     "format-charging": "{capacity}% ",
     "format-plugged": "{capacity}% ",
     "format-alt": "{time} {icon}",
-    "format-icons": ["", "", "", "", "", "", "", "", "", ""]
+    "format-icons": ["", "", "", "", "", "", "", "", "", ""],
+    "on-click": "env XDG_CURRENT_DESKTOP=GNOME gnome-control-center power"
   },
 
   "tray": {
