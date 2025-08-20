@@ -121,15 +121,10 @@ fi
 eval "$(oh-my-posh init bash --config /home/nikola/.poshthemes/huvix-2.omp.json)"
 eval "$(thefuck --alias)"
 
-alias gadd="git add . :^src/**/resources/**.yml :^src/**/resources/**.yaml; git status"
 alias nvim="nvim.appimage"
 
 # go 
 export PATH=$PATH:/usr/local/go/bin
-
-# bun
-export BUN_INSTALL="$HOME/.bun"
-export PATH=$BUN_INSTALL/bin:$PATH
 
 # homebrew
 eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"

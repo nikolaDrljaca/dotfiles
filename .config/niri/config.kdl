@@ -206,12 +206,12 @@ layout {
 // This line starts waybar, a commonly used bar for Wayland compositors.
 spawn-at-startup "waybar"
 spawn-at-startup "swaybg" "-i" "/home/nikola/Pictures/walls/foggy_valley_1.png" "-m" "fill" 
-spawn-at-startup "xwayland-satellite" ":12"
+spawn-at-startup "xwayland-satellite"
 //prefer-no-csd
 
 environment {
-    DISPLAY ":12"
-    //ELECTRON_OZONE_PLATFORM_HINT "auto"
+    DISPLAY ":0"
+    ELECTRON_OZONE_PLATFORM_HINT "auto"
 }
 
 hotkey-overlay {
@@ -296,7 +296,7 @@ binds {
     Mod+T hotkey-overlay-title="Open a Terminal: foot" { spawn "foot"; }
     Mod+B hotkey-overlay-title="Open Browser: chrome" repeat=false { spawn "google-chrome"; }
     Ctrl+Space hotkey-overlay-title="Run an Application: fuzzel" { spawn "fuzzel"; }
-    Mod+Alt+L hotkey-overlay-title="Power Menu" repeat=false { spawn "powermenu"; }
+    Mod+Alt+L hotkey-overlay-title="Power Menu" repeat=false { spawn "fuzzel-power-menu"; }
 
     // You can also use a shell. Do this if you need pipes, multiple commands, etc.
     // Note: the entire command goes as a single argument in the end.
