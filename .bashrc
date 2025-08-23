@@ -121,6 +121,9 @@ fi
 eval "$(oh-my-posh init bash --config /home/nikola/.poshthemes/huvix-2.omp.json)"
 eval "$(thefuck --alias)"
 
+# 
+export TERM=xterm-256color
+
 alias nvim="nvim.appimage"
 
 # go 

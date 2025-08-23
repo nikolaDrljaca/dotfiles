@@ -9,7 +9,6 @@ font-family = "JetBrainsMono Nerd Font"
 font-feature = -liga
 font-feature = -calt
 font-feature = -dlig
-theme = catppuccin-macchiato
 gtk-wide-tabs = false
 
 keybind = alt+t=new_tab
@@ -18,3 +17,27 @@ keybind = alt+l=next_tab
 keybind = alt+l=previous_tab
 
 confirm-close-surface = false
+
+# colorscheme
+palette = 0=#7a8478
+palette = 1=#e67e80
+palette = 2=#a7c080
+palette = 3=#dbbc7f
+palette = 4=#7fbbb3
+palette = 5=#d699b6
+palette = 6=#83c092
+palette = 7=#f2efdf
+palette = 8=#a6b0a0
+palette = 9=#f85552
+palette = 10=#8da101
+palette = 11=#dfa000
+palette = 12=#3a94c5
+palette = 13=#df69ba
+palette = 14=#35a77c
+palette = 15=#fffbef
+background = #1e2326
+foreground = #d3c6aa
+cursor-color = #e69875
+cursor-text = #4c3743
+selection-background = #4c3743
+selection-foreground = #d3c6aa
