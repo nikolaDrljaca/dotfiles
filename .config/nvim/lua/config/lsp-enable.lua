@@ -3,6 +3,5 @@ vim.lsp.enable({
 	"emmet-ls",
 	"tailwindcss",
 	"ts-ls",
-	-- "denols",
 	"yamlls",
 })
