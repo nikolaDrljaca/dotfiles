@@ -208,22 +208,28 @@ spawn-at-startup "waybar"
 spawn-at-startup "mako"
 spawn-at-startup "swaybg" "-i" "/home/nikola/Pictures/walls/foggy_valley_1.png" "-m" "fill" 
 spawn-at-startup "xwayland-satellite"
-//prefer-no-csd
+
+prefer-no-csd
 
 environment {
     XDF_CURRENT_DESKTOP "niri"
-    DISPLAY ":0"
     ELECTRON_OZONE_PLATFORM_HINT "auto"
     XDG_SESSION_TYPE "wayland"
-    QT_QPA_PLATFORM "wayland"
+    QT_QPA_PLATFORM "wayland;xcb"
+    QT_WAYLAND_DISABLE_WINDOWDECORATION "1"
     MOZ_ENABLE_WAYLAND "1"
+    DISPLAY ":0"
 }
 
 hotkey-overlay {
-    // Uncomment this line to disable the "Important Hotkeys" pop-up at startup.
     skip-at-startup
 }
 
+gestures {
+    hot-corners {
+        off
+    }
+}
 
 // You can change the path where screenshots are saved.
 // A ~ at the front will be expanded to the home directory.
@@ -263,7 +269,6 @@ window-rule {
     open-maximized true
 }
 
-// Open the Firefox picture-in-picture player as floating by default.
 window-rule {
     // This app-id regular expression will work for both:
     // - host Firefox (app-id is "firefox")
@@ -272,16 +277,19 @@ window-rule {
     open-floating true
 }
 
-// Example: block out two password managers from screen capture.
-// (This example rule is commented out with a "/-" in front.)
-/-window-rule {
-    match app-id=r#"^org\.keepassxc\.KeePassXC$"#
+window-rule {
+    match app-id=r#"^io\.missioncenter\.MissionCenter$"#
+    match app-id=r#"^org\.pipewire\.Helvum$"#
+    match app-id=r#"^com\.saivert\.pwvucontrol$"#
+
+    open-floating true
+    default-column-width  { fixed 1280; }
+    default-window-height { fixed 720; }
+}
+
+window-rule {
     match app-id=r#"^org\.gnome\.World\.Secrets$"#
-
     block-out-from "screen-capture"
-
-    // Use this instead if you want them visible on third-party screenshot tools.
-    // block-out-from "screencast"
 }
 
 window-rule {
@@ -290,9 +298,6 @@ window-rule {
 }
 
 binds {
-    // Most actions that you can bind here can also be invoked programmatically with
-    // `niri msg action do-something`.
-
     // Mod-Shift-/, which is usually the same as Mod-?,
     // shows a list of important hotkeys.
     Mod+Shift+Slash { show-hotkey-overlay; }
