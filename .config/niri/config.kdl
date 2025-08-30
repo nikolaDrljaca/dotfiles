@@ -207,7 +207,7 @@ layout {
 spawn-at-startup "waybar"
 spawn-at-startup "mako"
 spawn-at-startup "swaybg" "-i" "/home/nikola/Pictures/walls/foggy_valley_1.png" "-m" "fill" 
-spawn-at-startup "xwayland-satellite"
+//spawn-at-startup "xwayland-satellite"
 
 prefer-no-csd
 
@@ -218,7 +218,7 @@ environment {
     QT_QPA_PLATFORM "wayland;xcb"
     QT_WAYLAND_DISABLE_WINDOWDECORATION "1"
     MOZ_ENABLE_WAYLAND "1"
-    DISPLAY ":0"
+//    DISPLAY ":0"
 }
 
 hotkey-overlay {
@@ -281,6 +281,7 @@ window-rule {
     match app-id=r#"^io\.missioncenter\.MissionCenter$"#
     match app-id=r#"^org\.pipewire\.Helvum$"#
     match app-id=r#"^com\.saivert\.pwvucontrol$"#
+    match app-id="pavucontrol"
 
     open-floating true
     default-column-width  { fixed 1280; }
