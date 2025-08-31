@@ -207,7 +207,6 @@ layout {
 spawn-at-startup "waybar"
 spawn-at-startup "mako"
 spawn-at-startup "swaybg" "-i" "/home/nikola/Pictures/walls/foggy_valley_1.png" "-m" "fill" 
-//spawn-at-startup "xwayland-satellite"
 
 prefer-no-csd
 
@@ -218,7 +217,6 @@ environment {
     QT_QPA_PLATFORM "wayland;xcb"
     QT_WAYLAND_DISABLE_WINDOWDECORATION "1"
     MOZ_ENABLE_WAYLAND "1"
-//    DISPLAY ":0"
 }
 
 hotkey-overlay {
