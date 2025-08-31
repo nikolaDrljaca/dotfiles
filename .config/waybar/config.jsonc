@@ -94,6 +94,6 @@
     "format": "{icon} ",
     "format-icons": ["⏻"],
     "tooltip-format": "Power Menu",
-    "on-click": "fuzzel-power-menu"
+    "on-click": "wlogout"
   }
 }

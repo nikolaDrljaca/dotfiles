@@ -307,7 +307,7 @@ binds {
     Mod+T hotkey-overlay-title="Open a Terminal: foot" { spawn "foot"; }
     Mod+B hotkey-overlay-title="Open Browser: chrome" repeat=false { spawn "google-chrome"; }
     Ctrl+Space hotkey-overlay-title="Run an Application: fuzzel" { spawn "fuzzel"; }
-    Mod+Alt+L hotkey-overlay-title="Power Menu" repeat=false { spawn "fuzzel-power-menu"; }
+    Mod+Alt+L hotkey-overlay-title="Power Menu" repeat=false { spawn "wlogout"; }
 
     // You can also use a shell. Do this if you need pipes, multiple commands, etc.
     // Note: the entire command goes as a single argument in the end.

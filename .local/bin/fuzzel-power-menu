@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+## UNUSED
+
 #### Options ###
 power_off=" Shutdown"
 reboot="󰜉 Reboot"
