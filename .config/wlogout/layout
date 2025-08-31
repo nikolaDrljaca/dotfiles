@@ -1,18 +1,18 @@
 {
     "label" : "logout",
     "action" : "niri msg action quit -s",
-    "text" : "Logout",
+    "text" : "(L)ogout",
     "keybind" : "l"
 }
 {
     "label" : "shutdown",
     "action" : "systemctl poweroff",
-    "text" : "Shutdown",
+    "text" : "(S)hutdown",
     "keybind" : "s"
 }
 {
     "label" : "reboot",
     "action" : "systemctl reboot",
-    "text" : "Reboot",
+    "text" : "(R)eboot",
     "keybind" : "r"
 }
