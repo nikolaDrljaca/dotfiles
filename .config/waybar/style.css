@@ -4,7 +4,7 @@
 }
 
 window#waybar {
-  background-color: alpha(#2e383c, 0.999);
+  background-color: alpha(#272e33, 0.999);
   border: 3px solid rgba(255, 255, 255, 0.1);
   border-radius: 14px;
 }
@@ -31,7 +31,7 @@ tooltip label {
   color: #d3c6aa;
 }
 #workspaces button:hover {
-  background: #2e383c;
+  background: #272e33;
   border-radius: 4px;
 }
 #workspaces button.active {
@@ -94,7 +94,7 @@ tooltip label {
 }
 /* tray menu pop up */
 #tray menu {
-  background: #2e383c;
+  background: #272e33;
   color: #d3c6aa;
 }
 #tray menu menuitem:hover {
