@@ -278,6 +278,15 @@ window-rule {
 }
 
 window-rule {
+    match app-id="eyedropper"
+
+    open-floating true
+    default-floating-position x=50 y=50 relative-to="top-right"
+    default-column-width  { fixed 480; }
+    default-window-height { fixed 720; }
+}
+
+window-rule {
     match app-id=r#"^org\.gnome\.World\.Secrets$"#
     block-out-from "screen-capture"
 }
