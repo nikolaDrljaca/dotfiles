@@ -41,6 +41,14 @@ alias l='ls -CF'
 
 # CUSTOM
 
+# bind a script to a key combo
+project-menu() {
+    local project
+    project=$(find ~/personal -mindepth 1 -maxdepth 1 -type d | fzf) || return
+    nvim "$project"
+}
+bind -x '"\C-p": project-menu'
+
 # Local binaries
 export PATH="$PATH:/home/nikola/.local/bin"
 # JetBrains Toolbox
@@ -53,8 +61,6 @@ eval "$(thefuck --alias)"
 export TERM=xterm-256color
 # fzf reverse search - bash bindings
 eval "$(fzf --bash)"
-
-alias nvim="nvim.appimage"
 
 # homebrew
 eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
