@@ -4,4 +4,5 @@ vim.lsp.enable({
 	"tailwindcss",
 	"ts-ls",
 	"yamlls",
+	"kotlin-lsp",
 })
