@@ -8,6 +8,7 @@ vim.api.nvim_create_user_command("MasonInstallAll", function()
 		"emmet-ls",
 		"lua-language-server",
 		"yaml-language-server",
+		"marksman",
 
 		-- formatters
 		"stylua",

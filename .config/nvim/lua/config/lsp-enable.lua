@@ -5,4 +5,5 @@ vim.lsp.enable({
 	"ts-ls",
 	"yamlls",
 	"kotlin-lsp",
+	"marksman",
 })
