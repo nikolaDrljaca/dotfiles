@@ -49,6 +49,12 @@ project-menu() {
 }
 bind -x '"\C-p": project-menu'
 
+# function to edit work log for current week
+wlog() {
+    temp=$(date +%Y-%V) # eg 2025-40 (week number)
+    nvim "$HOME/personal/wlog/work-log-$temp.md"
+}
+
 # Local binaries
 export PATH="$PATH:/home/nikola/.local/bin"
 # JetBrains Toolbox
