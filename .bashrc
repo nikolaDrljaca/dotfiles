@@ -49,6 +49,9 @@ export PATH="$PATH:$HOME/.local/scripts/"
 # JetBrains Toolbox
 export PATH="$PATH:/home/nikola/.local/share/JetBrains/Toolbox/apps"
 
+# tmux project picker
+bind '"\C-f":"tmux-sessionizer\n"'
+
 eval "$(oh-my-posh init bash --config /home/nikola/.poshthemes/huvix-2.omp.json)"
 eval "$(thefuck --alias)"
 
