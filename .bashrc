@@ -41,22 +41,11 @@ alias l='ls -CF'
 
 # CUSTOM
 
-# bind a script to a key combo
-project-menu() {
-    local project
-    project=$(find ~/personal -mindepth 1 -maxdepth 1 -type d | fzf) || return
-    nvim "$project"
-}
-bind -x '"\C-p": project-menu'
-
-# function to edit work log for current week
-wlog() {
-    temp=$(date +%Y-%V) # eg 2025-40 (week number)
-    nvim "$HOME/personal/wlog/work-log-$temp.md"
-}
 
 # Local binaries
 export PATH="$PATH:/home/nikola/.local/bin"
+# Local scripts
+export PATH="$PATH:$HOME/.local/scripts/"
 # JetBrains Toolbox
 export PATH="$PATH:/home/nikola/.local/share/JetBrains/Toolbox/apps"
 
