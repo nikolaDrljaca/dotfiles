@@ -9,7 +9,7 @@
           "properties": {
             "cache_duration": "none"
           },
-          "template": "{{ .UserName }} ➜",
+          "template": "{{ .UserName }}@{{ .HostName }} ➜",
           "foreground": "#7FBBB3",
           "type": "session",
           "style": "plain"
