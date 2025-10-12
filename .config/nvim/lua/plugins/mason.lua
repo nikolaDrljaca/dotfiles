@@ -9,11 +9,12 @@ vim.api.nvim_create_user_command("MasonInstallAll", function()
 		"lua-language-server",
 		"yaml-language-server",
 		"marksman",
+		"pyrefly",
 
 		-- formatters
 		"stylua",
 		"rustywind", -- tailwind formatter
-		"autopep8",
+		"ruff",
 
 		-- linters
 	}
