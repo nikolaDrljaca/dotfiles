@@ -27,7 +27,6 @@ return {
 		},
 		formatters_by_ft = {
 			lua = { "stylua" },
-			-- python = { "autopep8" },
 			python = { "ruff_format" },
 			css = { "deno_fmt" },
 			html = { "deno_fmt" },
