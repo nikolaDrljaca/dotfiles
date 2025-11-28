@@ -28,6 +28,7 @@ return {
 				"javascript",
 				"tsx",
 				"json",
+				"astro",
 
 				-- JVM
 				"java",

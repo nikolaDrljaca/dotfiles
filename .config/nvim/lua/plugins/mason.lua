@@ -10,6 +10,7 @@ vim.api.nvim_create_user_command("MasonInstallAll", function()
 		"yaml-language-server",
 		"marksman",
 		"pyrefly",
+		"astro-language-server",
 
 		-- formatters
 		"stylua",
