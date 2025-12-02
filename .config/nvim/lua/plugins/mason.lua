@@ -16,6 +16,8 @@ vim.api.nvim_create_user_command("MasonInstallAll", function()
 		"stylua",
 		"rustywind", -- tailwind formatter
 		"ruff",
+		"sleek", -- sql formatter
+		"prettierd",
 
 		-- linters
 	}
