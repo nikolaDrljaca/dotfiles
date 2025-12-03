@@ -7,7 +7,7 @@ vim.g.maplocalleader = " "
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
 
-require("config.wiki")
+require("config.utils")
 -- remaps
 require("config.keymaps")
 -- lazy -> load plugins
