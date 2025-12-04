@@ -25,39 +25,28 @@ return {
 			pcall(require("telescope").load_extension, "fzf")
 			-- load ui-select
 			pcall(require("telescope").load_extension, "ui-select")
+			-- get the TS builtin
+			local builtin = require("telescope.builtin")
+
+			vim.keymap.set("n", "<leader>sf", builtin.find_files, { desc = "[S]earch [f]iles" })
+			vim.keymap.set("n", "<leader>sg", builtin.live_grep, { desc = "[S]earch by [G]rep" })
 
 			-- See `:help telescope.builtin`
-			vim.keymap.set("n", "<leader>fb", function()
+			vim.keymap.set("n", "<leader>sb", function()
 				-- You can pass additional configuration to telescope to change theme, layout, etc.
-				require("telescope.builtin").current_buffer_fuzzy_find(require("telescope.themes").get_dropdown({
+				builtin.current_buffer_fuzzy_find(require("telescope.themes").get_dropdown({
 					winblend = 10,
 					previewer = false,
 				}))
-			end, { desc = "[F]uzzily search in current [b]uffer" })
+			end, { desc = "Fuzzily [s]earch in current [b]uffer" })
 
-			-- custom find files function that tries to search git files first
-			-- if project is not a git repo switches to regular find files
-			local function find_files()
-				local find_git_files = require("telescope.builtin").git_files
-				if not pcall(find_git_files) then
-					require("telescope.builtin").find_files()
-				end
-			end
-			vim.keymap.set("n", "<leader>ff", find_files, { desc = "[F]ind [F]iles, git files if repo" })
-
-			vim.keymap.set(
-				"n",
-				"<leader>fw",
-				require("telescope.builtin").grep_string,
-				{ desc = "[F]ind current [W]ord" }
-			)
-			vim.keymap.set("n", "<leader>sg", require("telescope.builtin").live_grep, { desc = "[S]earch by [G]rep" })
 			vim.keymap.set(
 				"n",
 				"<leader>sd",
 				require("telescope.builtin").diagnostics,
 				{ desc = "[S]earch [D]iagnostics" }
 			)
+
 			vim.keymap.set("n", "<leader>sn", function()
 				require("telescope.builtin").find_files({ cwd = vim.fn.stdpath("config") })
 			end, { desc = "[S]earch [N]eovim files" })

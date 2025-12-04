@@ -10,6 +10,8 @@ return {
 		"postcss.config.cjs",
 		"postcss.config.mjs",
 		"postcss.config.ts",
+		-- Fallback for tailwind v4, where tailwind.config.* is not required anymore
+		".git",
 	},
 	filetypes = {
 		-- html
