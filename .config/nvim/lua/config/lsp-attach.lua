@@ -32,17 +32,41 @@ local on_attach = function(args)
 		print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
 	end, "[W]orkspace [L]ist Folders")
 
-	-- Diagnostic keymaps
-	vim.keymap.set("n", "]d", vim.diagnostic.goto_prev, { desc = "Go to previous diagnostic message" })
-	vim.keymap.set("n", "[d", vim.diagnostic.goto_next, { desc = "Go to next diagnostic message" })
-	vim.keymap.set("n", "<leader>q", vim.diagnostic.setloclist, { desc = "Open diagnostics list" })
-
 	-- enable autocompletions
 	local client_id = args.data.client_id
 	local client = vim.lsp.get_client_by_id(client_id)
 	if client == nil then
 		return
 	end
+
+	-- Diagnostic Config
+	-- See :help vim.diagnostic.Opts
+	vim.diagnostic.config({
+		severity_sort = true,
+		float = { border = "rounded", source = "if_many" },
+		underline = { severity = vim.diagnostic.severity.ERROR },
+		signs = vim.g.have_nerd_font and {
+			text = {
+				[vim.diagnostic.severity.ERROR] = "󰅚 ",
+				[vim.diagnostic.severity.WARN] = "󰀪 ",
+				[vim.diagnostic.severity.INFO] = "󰋽 ",
+				[vim.diagnostic.severity.HINT] = "󰌶 ",
+			},
+		} or {},
+		virtual_text = {
+			source = "if_many",
+			spacing = 2,
+			format = function(diagnostic)
+				local diagnostic_message = {
+					[vim.diagnostic.severity.ERROR] = diagnostic.message,
+					[vim.diagnostic.severity.WARN] = diagnostic.message,
+					[vim.diagnostic.severity.INFO] = diagnostic.message,
+					[vim.diagnostic.severity.HINT] = diagnostic.message,
+				}
+				return diagnostic_message[diagnostic.severity]
+			end,
+		},
+	})
 
 	-- NOTE: Completion handled by blink.cmp -> check plugin config
 
