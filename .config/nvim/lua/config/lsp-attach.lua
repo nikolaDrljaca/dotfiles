@@ -94,3 +94,22 @@ vim.api.nvim_create_autocmd("BufWritePre", {
 		})
 	end,
 })
+
+-- restart lsps
+function restart_lsp()
+	local fidget = require("fidget")
+	fidget.notify("Restarting clients..", nil, nil)
+
+	local bufnr = vim.api.nvim_get_current_buf()
+	local clients = vim.lsp.get_clients({ bufnr = bufnr })
+	for _, client in ipairs(clients) do
+		vim.lsp.stop_client(client.id)
+	end
+
+	vim.defer_fn(function()
+		vim.cmd("edit")
+		fidget.notify("Restart complete.", nil, nil)
+	end, 100)
+end
+
+vim.api.nvim_create_user_command("RestartLsp", restart_lsp, { nargs = 0 })
