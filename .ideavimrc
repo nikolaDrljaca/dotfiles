@@ -66,3 +66,7 @@ nmap <C-l> <Action>(EditorDuplicate)
 nmap <C-o> <Action>(Back)
 nmap [d <Action>(GotoNextError)
 nmap [c <Action>(VcsShowNextChangeMarker)
+
+" bookmark - harpoon - handling
+nmap <leader>a <Action>(ToggleBookmark)
+nmap <C-e> <Action>(ShowBookmarks)
