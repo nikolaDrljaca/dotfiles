@@ -29,6 +29,7 @@ return {
 			lua = { "stylua" },
 			python = { "ruff_format" },
 			sql = { "sleek" },
+			typescriptreact = { "prettierd" },
 		},
 	},
 }
