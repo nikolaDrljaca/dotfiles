@@ -28,28 +28,28 @@ return {
 			-- get the TS builtin
 			local builtin = require("telescope.builtin")
 
-			vim.keymap.set("n", "<leader>sf", builtin.find_files, { desc = "[S]earch [f]iles" })
-			vim.keymap.set("n", "<leader>sg", builtin.live_grep, { desc = "[S]earch by [G]rep" })
+			vim.keymap.set("n", "<leader>ff", builtin.find_files, { desc = "[F]ind [f]iles" })
+			vim.keymap.set("n", "<leader>fg", builtin.live_grep, { desc = "[F]ind with [G]rep across files" })
 
 			-- See `:help telescope.builtin`
-			vim.keymap.set("n", "<leader>sb", function()
+			vim.keymap.set("n", "<leader>fb", function()
 				-- You can pass additional configuration to telescope to change theme, layout, etc.
 				builtin.current_buffer_fuzzy_find(require("telescope.themes").get_dropdown({
 					winblend = 10,
 					previewer = false,
 				}))
-			end, { desc = "Fuzzily [s]earch in current [b]uffer" })
+			end, { desc = "Fuzzily [f]ind in current [b]uffer" })
 
 			vim.keymap.set(
 				"n",
-				"<leader>sd",
+				"<leader>fd",
 				require("telescope.builtin").diagnostics,
-				{ desc = "[S]earch [D]iagnostics" }
+				{ desc = "[F]ind [D]iagnostics" }
 			)
 
-			vim.keymap.set("n", "<leader>sn", function()
+			vim.keymap.set("n", "<leader>fn", function()
 				require("telescope.builtin").find_files({ cwd = vim.fn.stdpath("config") })
-			end, { desc = "[S]earch [N]eovim files" })
+			end, { desc = "[F]ind [N]eovim files" })
 		end,
 	},
 

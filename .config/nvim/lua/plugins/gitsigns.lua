@@ -56,6 +56,8 @@ local gs = {
 			-- map("n", "<leader>hR", gs.reset_buffer, { desc = "git Reset buffer" })
 			-- map("n", "<leader>hp", gs.preview_hunk, { desc = "preview git hunk" })
 
+			map("n", "<leader>gb", gs.blame, { desc = "Show blame in buffer" })
+
 			map("n", "<leader>hb", function()
 				gs.blame_line({ full = true })
 			end, { desc = "git blame line" })
