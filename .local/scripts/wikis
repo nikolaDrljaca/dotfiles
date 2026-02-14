@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+
+# use cat by default, or bat if available
+preview='cat {}'
+if command -v bat &>/dev/null
+then
+  preview='bat --style=numbers --color=always --line-range :500 {}'
+fi
+# take only file names where matched
+rg -l "$1" ~/personal/wiki/ | \
+    fzf --preview "$preview" --bind enter:'become(nvim {})'
