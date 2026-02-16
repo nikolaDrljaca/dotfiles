@@ -2,8 +2,28 @@ return {
 	-- Fuzzy Finder (files, lsp, etc) Telescope
 	{
 		"nvim-telescope/telescope.nvim",
-		branch = "0.1.x",
-		dependencies = { "nvim-lua/plenary.nvim" },
+		event = "VimEnter",
+		dependencies = {
+			"nvim-lua/plenary.nvim",
+
+			-- Fuzzy Finder Algorithm which requires local dependencies to be built.
+			-- Only load if `make` is available. Make sure you have the system
+			-- requirements installed.
+			{
+				"nvim-telescope/telescope-fzf-native.nvim",
+				-- NOTE: If you are having trouble with this installation,
+				--       refer to the README for telescope-fzf-native for more instructions.
+				build = "make",
+				cond = function()
+					return vim.fn.executable("make") == 1
+				end,
+			},
+
+			-- code actions and others appear in a window
+			{
+				"nvim-telescope/telescope-ui-select.nvim",
+			},
+		},
 		config = function()
 			require("telescope").setup({
 				extensions = {
@@ -51,23 +71,5 @@ return {
 				require("telescope.builtin").find_files({ cwd = vim.fn.stdpath("config") })
 			end, { desc = "[F]ind [N]eovim files" })
 		end,
-	},
-
-	-- Fuzzy Finder Algorithm which requires local dependencies to be built.
-	-- Only load if `make` is available. Make sure you have the system
-	-- requirements installed.
-	{
-		"nvim-telescope/telescope-fzf-native.nvim",
-		-- NOTE: If you are having trouble with this installation,
-		--       refer to the README for telescope-fzf-native for more instructions.
-		build = "make",
-		cond = function()
-			return vim.fn.executable("make") == 1
-		end,
-	},
-
-	-- code actions and others appear in a window
-	{
-		"nvim-telescope/telescope-ui-select.nvim",
 	},
 }

@@ -42,6 +42,7 @@ local on_attach = function(args)
 	-- Diagnostic Config
 	-- See :help vim.diagnostic.Opts
 	vim.diagnostic.config({
+		update_in_insert = false,
 		severity_sort = true,
 		float = { border = "rounded", source = "if_many" },
 		underline = { severity = vim.diagnostic.severity.ERROR },
@@ -67,6 +68,8 @@ local on_attach = function(args)
 			end,
 		},
 	})
+
+	vim.keymap.set("n", "<leader>q", vim.diagnostic.setloclist, { desc = "Open diagnostic [Q]uickfix list" })
 
 	-- NOTE: Completion handled by blink.cmp -> check plugin config
 
