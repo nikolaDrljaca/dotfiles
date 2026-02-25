@@ -21,6 +21,7 @@ local ensure_installed = {
 	"css",
 	"javascript",
 	"tsx",
+	"jsx",
 	"json",
 	"astro",
 
@@ -35,6 +36,7 @@ local ensure_installed = {
 	"sql",
 	"luadoc",
 	"vimdoc",
+	"typst",
 }
 
 return {

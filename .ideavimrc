@@ -26,6 +26,10 @@ map fm gq
 "" Use system clipboard
 set clipboard+=unnamed
 
+" plugins
+set commentary
+set highlightedyank
+
 " Find more examples here: https://jb.gg/share-ideavimrc
 " Custom Settings
 let mapleader=" "
@@ -50,8 +54,6 @@ nmap gO <Action>(FileStructurePopup)
 nmap <C-n> <Action>(ActivateProjectToolWindow)
 nmap <leader>ra <Action>(RenameElement)
 nmap <leader>fm <Action>(ReformatCode)
-nmap <leader>/ <Action>(CommentByLineComment)
-vmap <leader>/ <Action>(CommentByLineComment)
 
 nmap <TAB> <Action>(NextTab)
 nmap <S-TAB> <Action>(PreviousTab)
