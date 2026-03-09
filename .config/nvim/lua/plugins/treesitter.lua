@@ -1,4 +1,4 @@
-local ensure_installed = {
+local parsers = {
 	"c",
 	"cpp",
 	"go",
@@ -43,12 +43,26 @@ return {
 	"nvim-treesitter/nvim-treesitter",
 	lazy = false,
 	build = ":TSUpdate",
+	branch = "main",
 	config = function()
-		require("nvim-treesitter").install(ensure_installed)
+		require("nvim-treesitter").install(parsers)
 		vim.api.nvim_create_autocmd("FileType", {
-			pattern = ensure_installed,
-			callback = function()
-				vim.treesitter.start()
+			callback = function(args)
+				local buf, filetype = args.buf, args.match
+				local language = vim.treesitter.language.get_lang(filetype)
+				if not language then
+					return
+				end
+
+				-- check if parser exists and load it
+				if not vim.treesitter.language.add(language) then
+					return
+				end
+				-- enable highlighting and other features
+				vim.treesitter.start(buf, language)
+
+				-- enable treesitter based indentation
+				vim.bo.indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
 			end,
 		})
 	end,

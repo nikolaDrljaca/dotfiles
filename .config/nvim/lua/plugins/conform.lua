@@ -1,8 +1,3 @@
--- set formatting keybind
--- vim.keymap.set("n", "<leader>fm", function()
--- 	require("conform").format()
--- end)
-
 return {
 	"stevearc/conform.nvim",
 	event = { "BufWritePre" },
