@@ -8,7 +8,7 @@ then
 fi
 
 # take only file names where matched
-selected=$(rg -l "$1" ~/personal/wiki/ | fzf --preview "$preview")
+selected=$(rg -l "$1" ~/personal/wiki/ | sort -r | fzf --preview "$preview")
 
 if [[ -n "$selected" ]]; then
   nvim "$selected"
