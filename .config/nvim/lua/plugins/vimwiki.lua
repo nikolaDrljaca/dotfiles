@@ -14,6 +14,8 @@ return {
 		}
 		-- treat only files under personal/wiki as vimwiki files
 		vim.g.vimwiki_global_ext = 0
+		-- display 'raw' markdown
+		vim.g.vimwiki_conceallevel = 0
 		-- notes get automatic title eg: # 2025-10-08, format YYYY-MM-DD
 		-- vim.g.vimwiki_auto_header = 1
 
