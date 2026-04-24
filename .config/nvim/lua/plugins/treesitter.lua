@@ -61,8 +61,11 @@ return {
 				-- enable highlighting and other features
 				vim.treesitter.start(buf, language)
 
+				local has_indent_query = vim.treesitter.query.get(language, "indents") ~= nil
 				-- enable treesitter based indentation
-				vim.bo.indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
+				if has_indent_query then
+					vim.bo.indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
+				end
 			end,
 		})
 	end,
