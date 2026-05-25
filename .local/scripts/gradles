@@ -1,0 +1,10 @@
+#!/bin/bash
+
+if [ -f "./gradlew" ]; then
+    exec ./gradlew "$@"
+elif command -v gradle &>/dev/null; then
+    exec gradle "$@"
+else
+    echo "Error: No Gradle wrapper found and no system Gradle installed." >&2
+    exit 1
+fi
