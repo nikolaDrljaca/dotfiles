@@ -196,11 +196,29 @@ layout {
         // top 64
         // bottom 64
     }
+
+    // Noctalia required
+    background-color "transparent"
 }
 
-spawn-at-startup "waybar"
-spawn-at-startup "mako"
-spawn-at-startup "swaybg" "-i" "/home/nikola/Pictures/walls/house.jpg" "-m" "fill" 
+//spawn-at-startup "waybar"
+//spawn-at-startup "mako"
+//spawn-at-startup "swaybg" "-i" "/home/nikola/Pictures/walls/house.jpg" "-m" "fill" 
+spawn-at-startup "qs" "-c" "noctalia-shell"
+
+// START: Noctalia setup
+
+debug {
+  // Allows notification actions and window activation from Noctalia.
+  honor-xdg-activation-with-invalid-serial
+}
+// Set the regular wallpaper on the backdrop.
+layer-rule {
+  match namespace="^noctalia-wallpaper*"
+  place-within-backdrop true
+}
+
+// END
 
 prefer-no-csd
 
@@ -305,13 +323,10 @@ binds {
     // Suggested binds for running programs: terminal, app launcher, screen locker.
     Mod+T hotkey-overlay-title="Open a Terminal: foot" { spawn "foot"; }
     Mod+B hotkey-overlay-title="Open Browser: chrome" repeat=false { spawn "google-chrome"; }
-    Ctrl+Space hotkey-overlay-title="Run an Application: fuzzel" { spawn "fuzzel"; }
-    Mod+Alt+L hotkey-overlay-title="Power Menu" repeat=false { spawn "wlogout"; }
-
-    // You can also use a shell. Do this if you need pipes, multiple commands, etc.
-    // Note: the entire command goes as a single argument in the end.
-    // For example, this is a standard bind to toggle the screen reader (orca).
-    Super+Alt+S hotkey-overlay-title=null { spawn "sh" "-c" "pkill orca || exec orca"; }
+    //Ctrl+Space hotkey-overlay-title="Run an Application: fuzzel" { spawn "fuzzel"; }
+    //Mod+Alt+L hotkey-overlay-title="Power Menu" repeat=false { spawn "wlogout"; }
+    Mod+Alt+L hotkey-overlay-title="Power Menu" repeat=false { spawn-sh "qs -c noctalia-shell ipc call sessionMenu toggle"; }
+    Ctrl+Space hotkey-overlay-title="Run an Application" { spawn-sh "qs -c noctalia-shell ipc call launcher toggle"; }
 
     // Example volume keys mappings for PipeWire & WirePlumber.
     // The allow-when-locked=true property makes them work even when the session is locked.
