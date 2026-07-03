@@ -11,6 +11,7 @@ vim.api.nvim_create_user_command("MasonInstallAll", function()
 		"marksman",
 		"pyrefly",
 		"astro-language-server",
+		"systemd-lsp",
 
 		-- formatters
 		"stylua",
