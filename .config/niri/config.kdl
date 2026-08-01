@@ -64,43 +64,6 @@ input {
     // focus-follows-mouse max-scroll-amount="0%"
 }
 
-// You can configure outputs by their name, which you can find
-// by running `niri msg outputs` while inside a niri instance.
-// The built-in laptop monitor is usually called "eDP-1".
-// Find more information on the wiki:
-// https://github.com/YaLTeR/niri/wiki/Configuration:-Outputs
-// Remember to uncomment the node by removing "/-"!
-/-output "eDP-1" {
-    // Uncomment this line to disable this output.
-    // off
-
-    // Resolution and, optionally, refresh rate of the output.
-    // The format is "<width>x<height>" or "<width>x<height>@<refresh rate>".
-    // If the refresh rate is omitted, niri will pick the highest refresh rate
-    // for the resolution.
-    // If the mode is omitted altogether or is invalid, niri will pick one automatically.
-    // Run `niri msg outputs` while inside a niri instance to list all outputs and their modes.
-    mode "1920x1080@120.030"
-
-    // You can use integer or fractional scale, for example use 1.5 for 150% scale.
-    scale 2
-
-    // Transform allows to rotate the output counter-clockwise, valid values are:
-    // normal, 90, 180, 270, flipped, flipped-90, flipped-180 and flipped-270.
-    transform "normal"
-
-    // Position of the output in the global coordinate space.
-    // This affects directional monitor actions like "focus-monitor-left", and cursor movement.
-    // The cursor can only move between directly adjacent outputs.
-    // Output scale and rotation has to be taken into account for positioning:
-    // outputs are sized in logical, or scaled, pixels.
-    // For example, a 3840×2160 output with scale 2.0 will have a logical size of 1920×1080,
-    // so to put another output directly adjacent to it on the right, set its x to 1920.
-    // If the position is unset or results in an overlap, the output is instead placed
-    // automatically.
-    position x=1280 y=0
-}
-
 // Settings that influence how windows are positioned and sized.
 // Find more information on the wiki:
 // https://github.com/YaLTeR/niri/wiki/Configuration:-Layout
@@ -204,7 +167,7 @@ layout {
 //spawn-at-startup "waybar"
 //spawn-at-startup "mako"
 //spawn-at-startup "swaybg" "-i" "/home/nikola/Pictures/walls/house.jpg" "-m" "fill" 
-spawn-at-startup "qs" "-c" "noctalia-shell"
+spawn-at-startup "noctalia"
 
 // START: Noctalia setup
 
@@ -223,7 +186,7 @@ layer-rule {
 prefer-no-csd
 
 environment {
-    XDF_CURRENT_DESKTOP "niri"
+    XDG_CURRENT_DESKTOP "niri"
     ELECTRON_OZONE_PLATFORM_HINT "auto"
     XDG_SESSION_TYPE "wayland"
     QT_QPA_PLATFORM "wayland;xcb"
@@ -258,20 +221,6 @@ animations {
     slowdown 0.85
 }
 
-// Window rules let you adjust behavior for individual windows.
-// Find more information on the wiki:
-// https://github.com/YaLTeR/niri/wiki/Configuration:-Window-Rules
-
-// Work around WezTerm's initial configure bug
-// by setting an empty default-column-width.
-window-rule {
-    // This regular expression is intentionally made as specific as possible,
-    // since this is the default config, and we want no false positives.
-    // You can get away with just app-id="wezterm" if you want.
-    match app-id=r#"^org\.wezfurlong\.wezterm$"#
-    default-column-width {}
-}
-
 window-rule {
     match app-id="google-chrome"
     open-maximized true
@@ -282,6 +231,17 @@ window-rule {
     // - host Firefox (app-id is "firefox")
     // - Flatpak Firefox (app-id is "org.mozilla.firefox")
     match app-id=r#"firefox$"# title="^Picture-in-Picture$"
+    open-floating true
+}
+
+window-rule {
+    match app-id="flameshot"
+    open-fullscreen false
+    open-floating true
+}
+
+window-rule {
+    match app-id="jetbrains-idea" title="Welcome to IntelliJ IDEA"
     open-floating true
 }
 
@@ -311,7 +271,7 @@ window-rule {
 }
 
 window-rule {
-    geometry-corner-radius 14
+    geometry-corner-radius 4
     clip-to-geometry true
 }
 
@@ -323,10 +283,8 @@ binds {
     // Suggested binds for running programs: terminal, app launcher, screen locker.
     Mod+T hotkey-overlay-title="Open a Terminal: foot" { spawn "foot"; }
     Mod+B hotkey-overlay-title="Open Browser: chrome" repeat=false { spawn "google-chrome"; }
-    //Ctrl+Space hotkey-overlay-title="Run an Application: fuzzel" { spawn "fuzzel"; }
-    //Mod+Alt+L hotkey-overlay-title="Power Menu" repeat=false { spawn "wlogout"; }
-    Mod+Alt+L hotkey-overlay-title="Power Menu" repeat=false { spawn-sh "qs -c noctalia-shell ipc call sessionMenu toggle"; }
-    Ctrl+Space hotkey-overlay-title="Run an Application" { spawn-sh "qs -c noctalia-shell ipc call launcher toggle"; }
+    Mod+Alt+L hotkey-overlay-title="Session Lock" repeat=false { spawn-sh "noctalia msg session lock"; }
+    Ctrl+Space hotkey-overlay-title="Run an Application" { spawn-sh "noctalia msg panel-toggle launcher"; }
 
     // Example volume keys mappings for PipeWire & WirePlumber.
     // The allow-when-locked=true property makes them work even when the session is locked.
@@ -490,7 +448,10 @@ binds {
     // Mod+Space       { switch-layout "next"; }
     // Mod+Shift+Space { switch-layout "prev"; }
 
-    Print { screenshot; }
+    // Print { screenshot; }
+    Print {
+        spawn-sh "XDG_CURRENT_DESKTOP=sway flameshot gui";
+    }
     Ctrl+Print { screenshot-screen; }
     Alt+Print { screenshot-window; }
 
