@@ -1,4 +1,9 @@
 git:
-  pagers:
-    - externalDiffCommand: difft --color=always
-    - {} # default, no pager used
+  diffRenderers:
+    - command: difft --color=always
+      type: extDiff
+    - type: rawGit
+gui:
+  theme:
+    selectedLineBgColor:
+      - black
