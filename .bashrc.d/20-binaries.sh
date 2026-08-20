@@ -6,5 +6,5 @@ export PATH="$PATH:$HOME/.local/scripts"
 export PATH="$PATH:/home/nikola/.local/share/JetBrains/Toolbox/apps"
 
 if command -v bat &> /dev/null; then
-    alias cat='bat'
+    alias cat='bat -p'
 fi
