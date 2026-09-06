@@ -17,3 +17,4 @@ require("config.lsp-enable")
 -- load configs
 require("config.vim-opts")
 require("config.lsp-attach")
+require("config.systemd-filetype")
