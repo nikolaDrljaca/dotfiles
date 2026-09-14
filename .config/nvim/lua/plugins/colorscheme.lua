@@ -1,9 +1,11 @@
 return {
 	{
-		"felipeagc/fleet-theme-nvim",
+		"zenbones-theme/zenbones.nvim",
+		dependencies = "rktjmp/lush.nvim",
 		priority = 1000,
+		lazy = false,
 		config = function()
-			vim.cmd.colorscheme("fleet")
+			vim.cmd.colorscheme("zenburned")
 		end,
 	},
 }

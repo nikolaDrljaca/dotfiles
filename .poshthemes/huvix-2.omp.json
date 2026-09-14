@@ -10,7 +10,7 @@
             "cache_duration": "none"
           },
           "template": "{{ .UserName }}@{{ .HostName }} ➜",
-          "foreground": "#7FBBB3",
+          "foreground": "#DBA09E",
           "type": "session",
           "style": "plain"
         },
@@ -20,7 +20,7 @@
             "style": "agnoster_short"
           },
           "template": " {{ .Path }} ",
-          "foreground": "#DBBC7F",
+          "foreground": "#D4BD94",
           "type": "path",
           "style": "plain"
         },

@@ -3,7 +3,7 @@ return {
 	opts = {
 		options = {
 			icons_enabled = true,
-			theme = "nightfly",
+			theme = "seoul256",
 			component_separators = "|",
 			section_separators = "",
 		},
