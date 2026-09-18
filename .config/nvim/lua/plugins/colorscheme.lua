@@ -1,11 +1,10 @@
 return {
 	{
-		"zenbones-theme/zenbones.nvim",
-		dependencies = "rktjmp/lush.nvim",
+		"EdenEast/nightfox.nvim",
 		priority = 1000,
 		lazy = false,
 		config = function()
-			vim.cmd.colorscheme("zenburned")
+			vim.cmd.colorscheme("nordfox")
 		end,
 	},
 }
